@@ -26,10 +26,10 @@ public class Start {
 
             s.executeUpdate(sql);
 
-            s.execute("INSERT INTO newdb.student (last_name, first_name) VALUES('De Fenzo', 'Marco');");
-            s.execute("INSERT INTO newdb.student (last_name, first_name) VALUES('Vassarotti', 'Vittoria');");
-            s.execute("INSERT INTO newdb.student (last_name, first_name) VALUES('Di Leo', 'Luca');");
-            s.execute("INSERT INTO newdb.student (last_name, first_name) VALUES('Mustata', 'Alina Elena');");
+            s.executeUpdate("INSERT INTO newdb.student (last_name, first_name) VALUES('De Fenzo', 'Marco');");
+            s.executeUpdate("INSERT INTO newdb.student (last_name, first_name) VALUES('Vassarotti', 'Vittoria');");
+            s.executeUpdate("INSERT INTO newdb.student (last_name, first_name) VALUES('Di Leo', 'Luca');");
+            s.executeUpdate("INSERT INTO newdb.student (last_name, first_name) VALUES('Mustata', 'Alina Elena');");
 
             ResultSet rS = s.executeQuery("SELECT last_name, first_name FROM newdb.student;");
 
@@ -43,18 +43,19 @@ public class Start {
             String sql1 = "ALTER TABLE student ADD country VARCHAR(30)";
             s.executeUpdate(sql1);
 
-            s.execute("UPDATE student SET country = 'Italy' where last_name = 'De Fenzo'");
-            s.execute("UPDATE student SET country = 'Italy' where last_name = 'Vassarotti'");
-            s.execute("UPDATE student SET country = 'Germany' where last_name = 'Di Leo'");
-            s.execute("UPDATE student SET country = 'Germany' where last_name = 'Mustata'");
+            s.executeUpdate("UPDATE student SET country = 'Italy' where last_name = 'De Fenzo'");
+            s.executeUpdate("UPDATE student SET country = 'Italy' where last_name = 'Vassarotti'");
+            s.executeUpdate("UPDATE student SET country = 'Germany' where last_name = 'Di Leo'");
+            s.executeUpdate("UPDATE student SET country = 'Germany' where last_name = 'Mustata'");
 
         }catch(SQLException e) {
             System.out.println(e.getMessage());
 
         } finally {
             try{
-                if(con != null)
+                if(con != null){
                     con.close();
+                }
             }catch(SQLException ex){
                 System.out.println(ex.getMessage());
             }
